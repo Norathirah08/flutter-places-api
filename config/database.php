@@ -65,7 +65,7 @@ return [
             ]) : [],
         ],
 
-        'pgsql' => [
+        /*'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', 'dpg-cjiruu7jbvhs73bm0nvg-a.singapore-postgres.render.com'),
@@ -73,6 +73,21 @@ return [
             'database' => env('DB_DATABASE', 'places_api_bo6x'),
             'username' => env('DB_USERNAME', 'rest_api_user'),
             'password' => env('DB_PASSWORD', 'AgJId9WVN1rCVgrOmXLPCqNcZkZ6IW0S'),
+            'charset' => 'utf8',
+            'prefix' => '',
+            'prefix_indexes' => true,
+            'search_path' => 'public',
+            'sslmode' => 'prefer',
+        ],*/
+
+        'pgsql' => [
+            'driver' => 'pgsql',
+            'url' => env('DATABASE_URL'),
+            'host' => env('DB_HOST', 'localhost'),
+            'port' => env('DB_PORT', '5432'),
+            'database' => env('DB_DATABASE', 'pgsql'),
+            'username' => env('DB_USERNAME', 'pgsql'),
+            'password' => env('DB_PASSWORD', ''),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
