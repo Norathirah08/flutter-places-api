@@ -51,7 +51,9 @@ class PlaceController extends Controller
 
     //READ BY ID
     public function show($id){
-        $place = Place::find($id);
+        
+        //Get place info with it reviews info
+        $place = Place::with('reviews.user')->find($id);
 
         if($place){
             return response()->json([

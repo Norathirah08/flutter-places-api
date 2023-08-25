@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PlaceController;
@@ -18,6 +19,8 @@ use App\Http\Controllers\PassportAuthController;
 */
 
 
+
+//IF need login authentication put route in here
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -32,6 +35,10 @@ Route::middleware('jwt.auth')->group(function () {
     // Delete
     Route::delete('/places/{id}', [PlaceController::class,'delete']);
     // Route::delete('/places',[PlaceController::class,'deleteAll']);
+
+
+    //REVIEWS
+    Route::post('/places/{placeId}/reviews',[ReviewController::class,'store']);
 });
     
 
@@ -45,18 +52,15 @@ Route::get('/goodbye/{name}',function($name){
     return "Goodbye ".$name;
 });
 
-
 Route::post('/info', function(Request $request){
     return 'Hello '.$request['name'] . ' you are '.$request['age'] . ' years old';
 });
 
-
-
 Route::get('/places', [PlaceController::class,'index']);
 Route::get('/places/{id}', [PlaceController::class,'show']);
 
-
 // Public routes (no authentication required)
 Route::post('/register', [PassportAuthController::class, 'register']);
-
 Route::post('/login', [PassportAuthController::class, 'login']);
+
+
